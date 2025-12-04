@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I-Cell Topup Store - Versi Cantik</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary-color: #007bff; /* Biru Primer */
+        --secondary-color: #28a745; /* Hijau untuk tombol */
+        --background-color: #f7f9fc; /* Latar belakang sangat terang */
+        --card-background: #ffffff; /* Latar belakang kartu */
+        --text-dark: #2c3e50; /* Teks gelap */
+        --text-muted: #7f8c8d; /* Teks abu-abu */
+        --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --radius: 12px;
+    }
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: var(--background-color);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+    /* --- HEADER --- */
+    .header {
+        background: var(--card-background);
+        padding: 12px 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+    }
+    .header img {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+    }
+    .header-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+    /* --- APP BANNER & INFO --- */
+    .app-banner {
+        width: 100%;
+        height: 160px;
+        background: var(--primary-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .app-info {
+        background: var(--card-background);
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-top: -30px; /* Overlap with banner for a nice effect */
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        position: relative;
+        box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+    }
+    .app-info img {
+        width: 90px;
+        height: 90px;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .app-details h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text-dark);
+    }
+    .rating {
+        font-size: 14px;
+        margin-top: 4px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .star-icon {
+        color: gold;
+        font-size: 16px;
+    }
+
+    /* --- INSTALL BOX & BUTTON --- */
+    .install-box {
+        background: var(--card-background);
+        padding: 10px 20px 20px;
+    }
+    .install-btn {
+        width: 100%;
+        padding: 14px;
+        background: var(--secondary-color);
+        border: none;
+        border-radius: var(--radius);
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.1s;
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+    }
+    .install-btn:hover {
+        background: #218838;
+    }
+    .install-btn:active {
+        transform: scale(0.99);
+    }
+
+    /* --- SECTION --- */
+    .section {
+        background: var(--card-background);
+        padding: 20px;
+        margin-top: 10px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-light);
+        margin: 10px 10px 0 10px; /* Padding samping untuk card */
+    }
+    .section h3 {
+        margin-top: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--primary-color);
+        border-bottom: 2px solid #ecf0f1;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+    }
+    .section p {
+        font-size: 15px;
+        color: #555;
+    }
+
+    /* --- SCREENSHOTS --- */
+    .screenshots {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+    .screenshots::-webkit-scrollbar {
+        height: 6px;
+    }
+    .screenshots::-webkit-scrollbar-thumb {
+        background: #bdc3c7;
+        border-radius: 10px;
+    }
+    .screenshots img {
+        min-width: 180px; /* Disesuaikan untuk tampilan mobile */
+        height: 320px;
+        border-radius: 12px;
+        object-fit: cover;
+        background: #ecf0f1;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        scroll-snap-align: start;
+    }
+
+    /* --- REVIEWS --- */
+    .review {
+        padding: 15px 0;
+        border-bottom: 1px solid #ecf0f1;
+    }
+    .review:last-child {
+        border-bottom: none;
+    }
+    .review strong {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    .review p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: var(--text-muted);
+    }
+
+    /* --- SHARE BUTTON --- */
+    .share-btn {
+        padding:12px 20px;
+        background:#25D366; /* WhatsApp Green */
+        color:#fff;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        font-size: 16px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.3s;
+    }
+    .share-btn:hover {
+        background: #1EBE5A;
+    }
+</style>
+</head>
+<body>
+    <div class="header">
+        <img src="icon/logoo.png" alt="I-Cell Logo" />
+        <div class="header-title">I-Cell Topup Store</div>
+    </div>
+
+    <div class="app-banner">
+        <img src="icon/benner.png" alt="I-Cell Logo" style="width: 500px; height: 500px; border-radius: 20px; opacity: 0,2;" />
+    </div>
+
+    <div class="app-info">
+        <img src="icon/logoo.png" alt="I-Cell App Icon" />
+        <div class="app-details">
+            <h2>iCell</h2>
+            <div class="rating">
+                <span class="star-icon">★</span> 4.9 • 10rb+ pengguna
+            </div>
+        </div>
+    </div>
+
+    <div class="install-box">
+        <button class="install-btn" onclick="downloadApp()">Download Aplikasi Sekarang</button>
+    </div>
+
+    <div class="section">
+        <h3>Tentang Aplikasi Ini</h3>
+        <p>Aplikasi resmi iCell , solusi terdepan Anda untuk pembelian pulsa, paket data, PPOB (Pembayaran Poin Online Bank), dan berbagai layanan digital lainnya. Nikmati kecepatan transaksi, harga kompetitif, dan antarmuka yang ramah pengguna.</p>
+    </div>
+
+    <div class="section">
+        <h3>Cuplikan Layar</h3>
+        <div class="screenshots">
+            <img src="icon/ss1.png" alt="Screenshot 1" />
+            <img src="icon/ss2.png" alt="Screenshot 2" />
+            <img src="icon/ss3.png" alt="Screenshot 3" />
+            <img src="icon/ss4.png" alt="Screenshot 4" />
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Bagikan Aplikasi</h3>
+        <button class="share-btn" onclick="shareApp()">
+            <span style="font-size: 20px;">💬</span> Bagikan via WhatsApp
+        </button>
+    </div>
+
+    <div class="section">
+        <h3>Ulasan Pengguna</h3>
+        <div class="review">
+            <strong>R***n (★★★★★)</strong>
+            <p>Aplikasinya ringan dan topup cepat masuk. Proses verifikasi mudah dan tidak ribet!</p>
+        </div>
+        <div class="review">
+            <strong>A***a (★★★★☆)</strong>
+            <p>Sangat terbantu untuk PPOB harian. Interface jelas dan mudah dipahami, tapi terkadang ada lag sedikit saat load menu.</p>
+        </div>
+        <div class="review">
+            <strong>S***o (★★★★★)</strong>
+            <p>Layanan pelanggan responsif. Harga bersaing. Sudah jadi aplikasi andalan buat jualan pulsa.</p>
+        </div>
+    </div>
+
+    <script>
+    function downloadApp() {
+        // Logika download
+        window.location.href = "https://icell.ngtopup.com/";
+        alert("Anda akan diarahkan ke halaman Download I-Cell NgTopup!");
+    }
+    function shareApp() {
+        const text = encodeURIComponent("Yuk download aplikasi I-Cell NgTopup untuk beli pulsa, paket data, dan PPOB dengan harga murah dan cepat! Download di: https://icell.ngtopup.com/");
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${text}`;
+        window.open(whatsappUrl, '_blank');
+    }
+    </script>
+</body>
+</html>
