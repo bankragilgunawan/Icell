@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>iCell Topup Apa Saja</title>
+<title>iCell Topup Store - Topup apa saja bisa</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
@@ -46,18 +46,18 @@
         color: var(--text-dark);
     }
     .header-download-btn {
-    margin-left: auto;
-    padding: 8px 14px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    display: none; /* disembunyikan dulu */
-    box-shadow: 0 3px 8px rgba(40,167,69,0.3);
-    transition: 0.25s;
+        margin-left: auto;
+        padding: 8px 14px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        display: none; /* disembunyikan dulu */
+        box-shadow: 0 3px 8px rgba(40,167,69,0.3);
+        transition: 0.25s;
     }
 
    .header-download-btn:hover {
@@ -66,14 +66,26 @@
 
     /* --- APP BANNER & INFO --- */
     .app-banner {
+        /* Ganti background solid menjadi gradien dinamis */
+        background: linear-gradient(135deg, var(--primary-color) 0%, #1e90ff 100%);
         width: 100%;
         height: 250px;
-        background: var(--primary-color);
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
+        position: relative;
     }
+    
+    /* Memperbaiki posisi dan shadow mockup ponsel */
+    .app-banner2 img {
+        /* Gunakan filter drop-shadow yang lebih halus dan nyata */
+        filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
+        /* TRANSFORM DIKURANGI AGAR TIDAK OVERLAP */
+        transform: translateY(-10px); 
+        margin-bottom: -10px; /* Kompensasi untuk overlap yang lebih kecil */
+    }
+    
     .app-info {
         background: var(--card-background);
         padding: 20px;
@@ -93,41 +105,93 @@
         object-fit: cover;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
     .app-details h2 {
         margin: 0;
         font-size: 24px;
         font-weight: 700;
         color: var(--text-dark);
     }
-    .rating {
-        font-size: 14px;
-        margin-top: 4px;
-        color: var(--text-muted);
+    
+    /* Container untuk Rating dan Pengguna */
+    .rating-container-new {
+        display: flex;
+        gap: 15px; /* Jarak antara Rating dan Pengguna */
+        margin-top: 8px;
+        align-items: center;
+    }
+    
+    /* Styling untuk Badge Rating 4.9 */
+    .rating-badge {
         display: flex;
         align-items: center;
-        gap: 5px;
-    }
-    .star-icon {
-        color: #28a745;
+        gap: 4px;
+        padding: 6px 10px;
+        background-color: var(--secondary-color); /* Warna Hijau */
+        color: white;
+        border-radius: 8px;
+        font-weight: 700;
         font-size: 16px;
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
     }
-        /* --- INSTALL BOX & BUTTON --- */
+    
+    .rating-badge .star-icon-fill {
+        color: white; /* Bintang putih di dalam badge hijau */
+        font-size: 18px;
+    }
+
+    /* Styling untuk Info Pengguna */
+    .user-info-stats {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+    
+    .user-count {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-dark); /* Teks lebih menonjol */
+    }
+    
+    .user-label {
+        font-size: 12px;
+        color: var(--text-muted);
+        font-weight: 400;
+    }
+    
+    /* --- INSTALL BOX & BUTTON --- */
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+        }
+    }
+    
     .install-box {
         background: var(--card-background);
-        padding: 10px 20px 20px;
+        padding: 10px 20px 25px; /* Tambah padding bottom */
+        margin-bottom: 25px; 
+        border-bottom: 5px solid var(--secondary-color); /* Perkuat border */
     }
+    
     .install-btn {
         width: 100%;
         padding: 14px;
         background: var(--secondary-color);
         border: none;
-        border-radius: var(--radius);
+        border-radius: 14px;
         color: #fff;
         font-size: 18px;
         font-weight: 600;
         cursor: pointer;
         transition: background 0.3s, transform 0.1s;
-        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+        box-shadow: 0 6px 14px rgba(40,167,69,0.35);
+        animation: pulse 2s infinite; /* Tambahkan animasi */
     }
     .install-btn:hover {
         background: #218838;
@@ -178,82 +242,86 @@
     .screenshots img {
         min-width: 180px; /* Disesuaikan untuk tampilan mobile */
         height: 320px;
-        border-radius: 12px;
+        border-radius: 18px;
         object-fit: cover;
         background: #ecf0f1;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
         scroll-snap-align: start;
-    }
-    
-    .screenshots img {
-    border-radius: 18px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-    }
-    
-    .screenshots img {
-    transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s;
     }
 
-.screenshots img:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    .screenshots img:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 22px rgba(0,0,0,0.18);
     }
 
-    /* --- REVIEWS --- */
-.review-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    margin-bottom: 15px;
-    overflow: hidden;
-}
+    /* --- REVIEWS (CSS BARU) --- */
+    .review-card {
+        background: var(--card-background);
+        border: 1px solid #e8eaf6; 
+        border-radius: var(--radius);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 15px;
+        overflow: hidden;
+        transition: 0.3s;
+    }
 
-.review-header {
-    background: #007bff20;
-    padding: 12px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;    
-}
+    .review-card:hover {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
 
-.review-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: #2c3e50;
-}
+    .review-header {
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #f4f5f8;
+    }
 
-.review-stars {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
+    .review-name {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-dark);
+    }
 
-.star {
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-}
-.star svg {
-    width: 100%;
-    height: 100%;
-}
+    .review-rating-display {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #e8f5e9; 
+        padding: 4px 10px;
+        border-radius: 6px;
+    }
 
-.star.filled svg { fill: #28a745; }
-.star.empty svg { fill: #2c3e50; opacity: 0.2; }
+    .review-stars {
+        display: flex;
+        align-items: center;
+        gap: 1px;
+    }
 
-.rating-number {
-    font-size: 14px;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-left: 4px;
-}
+    .star {
+        width: 16px; 
+        height: 16px;
+        display: inline-block;
+    }
 
-.review-body {
-    padding: 14px 16px;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-}
+    .star.filled svg { fill: var(--secondary-color); }
+    .star.empty svg { fill: #cfd8dc; }
+
+    .rating-number {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--secondary-color);
+    }
+
+    .review-body {
+        padding: 14px 16px;
+        font-size: 15px;
+        color: #555;
+        line-height: 1.6;
+    }
+
 
     /* --- SHARE BUTTON --- */
     .share-btn {
@@ -261,7 +329,7 @@
         background:#25D366; /* WhatsApp Green */
         color:#fff;
         border:none;
-        border-radius:8px;
+        border-radius:var(--radius);
         cursor:pointer;
         font-size: 16px;
         font-weight: 600;
@@ -273,31 +341,98 @@
     .share-btn:hover {
         background: #1EBE5A;
     }
-    .share-btn {
-    border-radius: var(--radius);
-    }
-    
-    .install-btn {
-    border-radius: 14px;
-    box-shadow: 0 6px 14px rgba(40,167,69,0.35);
-    }
     
     /*-- download --*/
     .main-download-btn {
-    transition: 0.25s ease;
-}
-.main-download-btn.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-.header-download-btn {
-    transition: 0.25s ease;
-}
-.install-box {
-    background: var(--card-background);
-    padding: 10px 20px 20px;
-    margin-bottom: 25px; /* jarak baru */
-}
+        transition: 0.25s ease;
+    }
+    .main-download-btn.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .header-download-btn {
+        transition: 0.25s ease;
+    }
+
+
+    /* --- ACCORDION UI BARU (Cara Simpan) --- */
+    .accordion-container {
+        padding: 0;
+    }
+
+    .accordion {
+        /* Gaya Dasar Tombol */
+        background: var(--background-color);
+        color: var(--text-dark);
+        cursor: pointer;
+        padding: 16px;
+        width: 100%;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 600;
+        border: 1px solid #e8eaf6; 
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: 0.3s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .accordion:hover {
+        background: #e9eff7; 
+        border-color: var(--primary-color);
+    }
+
+    .accordion.active {
+        background: #e1ecf9; 
+        color: var(--primary-color); 
+        border-color: var(--primary-color);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    /* Icon (Plus/Minus) */
+    .accordion-icon {
+        font-size: 20px;
+        font-weight: 700;
+        transition: transform 0.3s ease;
+        color: var(--primary-color);
+    }
+
+    .accordion.active .accordion-icon {
+        transform: rotate(45deg); 
+    }
+
+    .panel {
+        /* Gaya Panel Konten */
+        padding: 10px 18px 20px;
+        display: none;
+        overflow: hidden;
+        background: var(--card-background);
+        border: 1px solid var(--primary-color);
+        border-top: none; 
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        margin-top: -10px; 
+        margin-bottom: 15px; 
+    }
+
+    .panel ol {
+        padding-left: 20px;
+        color: var(--text-dark);
+        list-style-type: decimal;
+    }
+
+    .panel ol li {
+        margin-bottom: 8px;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .panel ol li strong {
+        color: var(--secondary-color); 
+    }
 
 </style>
 </head>
@@ -306,44 +441,56 @@
     <img src="https://bankragilgunawan.wordpress.com/wp-content/uploads/2025/12/17648813553397622019430787869741.jpg" alt="I-Cell Logo" />
     <div class="header-title">iCell</div>
 
-    <!-- Tombol sticky download -->
     <button class="header-download-btn" onclick="downloadApp()">Download</button>
-</div></div>
+</div>
 
-     <div class="app-banner">
+    <div class="app-banner">
         <img src="https://bankragilgunawan.wordpress.com/wp-content/uploads/2025/12/img_20251205_1552251399690832804672510.jpg" alt="I-Cell Logo" style="width: 580px; height: 250px; border-radius: 20px; opacity: 1;" />
-     </div>
-    
+    </div>
+
     <div class="app-info">
         <img src="https://bankragilgunawan.wordpress.com/wp-content/uploads/2025/12/17648813553397622019430787869741.jpg" alt="I-Cell App Icon" />
-        <div class="app-details">
+       <div class="app-details">
             <h2>iCell</h2>
-            <div class="rating">
-                <span class="star-icon">★</span> 4.9 • 10rb+ pengguna
+            <div class="rating-container-new">
+                <div class="rating-badge">
+                    <span class="star-icon-fill">★</span> 
+                    <span>4.9</span>
+                </div>
+                
+                <div class="user-info-stats">
+                    <span class="user-count">10rb+</span>
+                    <span class="user-label">Pengguna Aktif</span>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="install-box">
         <button class="install-btn main-download-btn" onclick="downloadApp()">Download Aplikasi Sekarang</button>
-        </div</div>
+    </div>
         
-        <div class="app-banner2"><img src="https://bankragilgunawan.wordpress.com/wp-content/uploads/2025/12/1000021269-removebg-preview6543718763556993671.png"
-     style="
-        width: 385px;
-        height: 200px;
-        border-radius: 30px;
-        opacity: 1;
-        filter: drop-shadow(0 12px 12px rgba(0,0,0,0.50));
-     ">
+    <div class="app-banner2" style="text-align: center;"> 
+        <img src="https://bankragilgunawan.wordpress.com/wp-content/uploads/2025/12/1000021269-removebg-preview6543718763556993671.png"
+         style="
+            width: 385px;
+            height: 200px;
+            border-radius: 30px;
+            opacity: 1;
+         ">
+    </div>
      
     <div class="section" id="about-section">
-                <h3>Tentang Aplikasi Ini</h3>
+        <h3 style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: var(--secondary-color); font-size: 22px;">💡</span> 
+            Tentang Aplikasi Ini
+        </h3>
         <p>
-iCell adalah aplikasi serba bisa untuk kebutuhan digital kamu. Mulai dari isi pulsa, paket data, token PLN, hingga pembayaran PPOB—semua bisa dilakukan dalam hitungan detik. Harga lebih hemat, proses cepat, dan tampilan yang sederhana membuat iCell jadi pilihan tepat untuk pengguna maupun penjual pulsa. 
-<br><br>
-Transaksi lebih mudah, aman, dan tanpa ribet. Cukup buka iCell, pilih layanan, bayar, beres.
-</p>    </div>
+            iCell adalah aplikasi serba bisa untuk kebutuhan digital kamu. Mulai dari isi pulsa, paket data, token PLN, hingga pembayaran PPOB—semua bisa dilakukan dalam hitungan detik. Harga lebih hemat, proses cepat, dan tampilan yang sederhana membuat iCell jadi pilihan tepat untuk pengguna maupun penjual pulsa. 
+            <br><br>
+            Transaksi lebih mudah, aman, dan tanpa ribet. Cukup buka iCell, pilih layanan, bayar, beres.
+        </p>    
+    </div>
 
     <div class="section">
         <h3>Cuplikan Layar</h3>
@@ -356,92 +503,49 @@ Transaksi lebih mudah, aman, dan tanpa ribet. Cukup buka iCell, pilih layanan, b
     </div>
     
     <div class="section">
-    <h3>Cara Simpan ke Layar Utama</h3>
+        <h3>Cara Simpan ke Layar Utama</h3>
 
-    <style>
-        .accordion {
-            background: #ffffff;
-            border: 2px solid #007bff;
-            color: #2c3e50;
-            cursor: pointer;
-            padding: 14px;
-            width: 100%;
-            text-align: left;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            transition: 0.3s;
-        }
-        .accordion:hover {
-            background: #007bff10;
-        }
-        .accordion.active {
-            background: #007bff15;
-        }
-        .panel {
-            padding: 0 15px;
-            display: none;
-            overflow: hidden;
-            border-left: 3px solid #28a745;
-            margin-bottom: 10px;
-            background: #ffffff;
-            border-radius: 8px;
-        }
-        .panel ol {
-            padding-left: 20px;
-            color: #2c3e50;
-        }
-    </style>
+        <div class="accordion-container">
+            <button class="accordion">
+                <span>Android (Chrome)</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="panel">
+                <ol>
+                    <li>Buka halaman ini di Google Chrome.</li>
+                    <li>Tekan ikon <strong>tiga titik</strong> di pojok kanan atas.</li>
+                    <li>Pilih <strong>“Tambahkan ke Layar Utama”</strong>.</li>
+                    <li>Tekan <strong>Add</strong> untuk menambahkan aplikasi.</li>
+                </ol>
+            </div>
 
-    <!-- ANDROID -->
-    <button class="accordion">Android (Chrome)</button>
-    <div class="panel">
-        <ol>
-            <li>Buka halaman ini di Google Chrome.</li>
-            <li>Tekan ikon <strong>tiga titik</strong> di pojok kanan atas.</li>
-            <li>Pilih <strong>“Tambahkan ke Layar Utama”</strong>.</li>
-            <li>Tekan <strong>Add</strong> untuk menambahkan aplikasi.</li>
-        </ol>
+            <button class="accordion">
+                <span>iPhone (Safari)</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="panel">
+                <ol>
+                    <li>Buka halaman ini di Safari.</li>
+                    <li>Tap ikon <strong>Share</strong> (kotak + panah ke atas).</li>
+                    <li>Pilih <strong>“Add to Home Screen”</strong>.</li>
+                    <li>Tap <strong>Add</strong> untuk memasang aplikasi.</li>
+                </ol>
+            </div>
+
+            <button class="accordion">
+                <span>Laptop / PC (Chrome)</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="panel">
+                <ol>
+                    <li>Buka halaman ini di Google Chrome.</li>
+                    <li>Cari ikon <strong>Install App</strong> (+) di address bar.</li>
+                    <li>Atau klik <strong>tiga titik</strong> → pilih <strong>“Install page as app”</strong>.</li>
+                    <li>Aplikasi akan muncul di desktop seperti program biasa.</li>
+                </ol>
+            </div>
+        </div>
     </div>
-
-    <!-- IPHONE -->
-    <button class="accordion">iPhone (Safari)</button>
-    <div class="panel">
-        <ol>
-            <li>Buka halaman ini di Safari.</li>
-            <li>Tap ikon <strong>Share</strong> (kotak + panah ke atas).</li>
-            <li>Pilih <strong>“Add to Home Screen”</strong>.</li>
-            <li>Tap <strong>Add</strong> untuk memasang aplikasi.</li>
-        </ol>
-    </div>
-
-    <!-- PC / LAPTOP -->
-    <button class="accordion">Laptop / PC (Chrome)</button>
-    <div class="panel">
-        <ol>
-            <li>Buka halaman ini di Google Chrome.</li>
-            <li>Cari ikon <strong>Install App</strong> (+) di address bar.</li>
-            <li>Atau klik <strong>tiga titik</strong> → pilih <strong>“Install page as app”</strong>.</li>
-            <li>Aplikasi akan muncul di desktop seperti program biasa.</li>
-        </ol>
-    </div>
-
-    <script>
-        var acc = document.getElementsByClassName("accordion");
-        for (let i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
-            });
-        }
-    </script>
-</div>
 
     <div class="section">
         <h3>Bagikan Aplikasi</h3>
@@ -453,63 +557,88 @@ Transaksi lebih mudah, aman, dan tanpa ribet. Cukup buka iCell, pilih layanan, b
     <div class="section">
         <h3>Ulasan Pengguna</h3>
        <div class="review-card" data-rating="5">
-    <div class="review-header">
-        <div class="review-name">R***n</div>
-        <div class="review-stars"></div>
-    </div>
-    <div class="review-body">
-        Aplikasinya ringan dan topup cepat masuk. Proses verifikasi mudah dan tidak ribet!
-    </div>
-</div>
+            <div class="review-header">
+                <div class="review-name">R***n</div>
+                <div class="review-rating-display"></div>
+            </div>
+            <div class="review-body">
+                Aplikasinya ringan dan topup cepat masuk. Proses verifikasi mudah dan tidak ribet!
+            </div>
+        </div>
 
-<div class="review-card" data-rating="4">
-    <div class="review-header">
-        <div class="review-name">A***a</div>
-        <div class="review-stars"></div>
+        <div class="review-card" data-rating="4">
+            <div class="review-header">
+                <div class="review-name">A***a</div>
+                <div class="review-rating-display"></div>
+            </div>
+            <div class="review-body">
+                Sangat terbantu untuk PPOB harian. Interface jelas dan mudah dipahami, tapi ada sedikit lag saat load menu.
+            </div>
+        </div>
+
+        <div class="review-card" data-rating="5">
+            <div class="review-header">
+                <div class="review-name">S***o</div>
+                <div class="review-rating-display"></div>
+            </div>
+            <div class="review-body">
+                Layanan pelanggan responsif. Harga bersaing. Sudah jadi aplikasi andalan buat jualan pulsa.
+            </div>
+        </div>
     </div>
-    <div class="review-body">
-        Sangat terbantu untuk PPOB harian. Interface jelas dan mudah dipahami, tapi ada sedikit lag saat load menu.
+
+    <div style="text-align:center; padding:25px; color: var(--text-muted); font-size:13px;">
+        &copy; 2025 iCell | Layanan Digital Cepat & Terpercaya
     </div>
-</div>
 
-<div class="review-card" data-rating="5">
-    <div class="review-header">
-        <div class="review-name">S***o</div>
-        <div class="review-stars"></div>
-    </div>
-    <div class="review-body">
-        Layanan pelanggan responsif. Harga bersaing. Sudah jadi aplikasi andalan buat jualan pulsa.
-    </div>
-</div>
-</div>
+    <script>
+    (function loadStars(){
+        const STAR = `<svg viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431L23.4 9.75l-5.7 5.557L18.92 24 12 19.897 5.08 24l1.22-8.693L.6 9.75l7.732-1.732L12 .587z"/></svg>`;
 
-<div style="text-align:center; padding:20px; color: #7f8c8d90; font-size:13px;">
-    © 2025 iCell — Layanan Digital Cepat & Terpercaya
-</div>
+        document.querySelectorAll(".review-card").forEach(card => {
+            const rating = parseInt(card.getAttribute("data-rating"));
+            
+            const displayContainer = card.querySelector(".review-rating-display");
+            if (!displayContainer) return; 
 
-   <script>
-(function loadStars(){
-    const STAR = `<svg viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431L23.4 9.75l-5.7 5.557L18.92 24 12 19.897 5.08 24l1.22-8.693L.6 9.75l7.732-1.732L12 .587z"/></svg>`;
+            const starContainer = document.createElement("div");
+            starContainer.className = "review-stars";
+            
+            for (let i = 1; i <= 5; i++) {
+                const star = document.createElement("span");
+                star.className = "star " + (i <= rating ? "filled" : "empty");
+                star.innerHTML = STAR;
+                starContainer.appendChild(star);
+            }
 
-    document.querySelectorAll(".review-card").forEach(card => {
-        const rating = parseInt(card.getAttribute("data-rating"));
-        const container = card.querySelector(".review-stars");
-        container.innerHTML = "";
-
-        for (let i = 1; i <= 5; i++) {
-            const star = document.createElement("span");
-            star.className = "star " + (i <= rating ? "filled" : "empty");
-            star.innerHTML = STAR;
-            container.appendChild(star);
+            const number = document.createElement("span");
+            number.className = "rating-number";
+            number.textContent = rating + ".0";
+            
+            displayContainer.appendChild(number); 
+            displayContainer.appendChild(starContainer); 
+        });
+    })();
+    </script>
+    
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                var icon = this.querySelector(".accordion-icon");
+                
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                    icon.textContent = "+"; 
+                } else {
+                    panel.style.display = "block";
+                    icon.textContent = "×"; 
+                }
+            });
         }
-
-        const number = document.createElement("span");
-        number.className = "rating-number";
-        number.textContent = rating + ".0";
-        container.appendChild(number);
-    });
-})();
-</script>
+    </script>
 
     <script>
     function downloadApp() {
@@ -517,34 +646,34 @@ Transaksi lebih mudah, aman, dan tanpa ribet. Cukup buka iCell, pilih layanan, b
         window.location.href = "https://icell.ngtopup.com/register?reff=P00001";
             }
     function shareApp() {
-        const text = encodeURIComponent("Yuk download aplikasi iCell untuk beli pulsa, paket data, dan PPOB dengan harga murah dan cepat! Download di: https://icell.ngtopup.com/");
+        const text = encodeURIComponent("Yuk download aplikasi I-Cell NgTopup untuk beli pulsa, paket data, dan PPOB dengan harga murah dan cepat! Download di: https://icell.ngtopup.com/register?reff=P00001");
         const whatsappUrl = `https://api.whatsapp.com/send?text=${text}`;
         window.open(whatsappUrl, '_blank');
     }
     </script>
     
     <script>
-window.addEventListener("scroll", function () {
+    window.addEventListener("scroll", function () {
 
-    const about = document.getElementById("about-section");
-    const headerBtn = document.querySelector(".header-download-btn");
-    const mainBtn = document.querySelector(".main-download-btn");
+        const about = document.getElementById("about-section");
+        const headerBtn = document.querySelector(".header-download-btn");
+        const mainBtn = document.querySelector(".main-download-btn");
 
-    // Posisi Y bagian atas section "Tentang Aplikasi"
-    const aboutTop = about.getBoundingClientRect().top;
+        // Posisi Y bagian atas section "Tentang Aplikasi"
+        const aboutTop = about.getBoundingClientRect().top;
 
-    // Jika bagian "Tentang Aplikasi" sudah melewati atas layar (scroll ke bawah)
-    if (aboutTop < 0) {
-        headerBtn.style.display = "block";   // munculkan tombol header
-        mainBtn.classList.add("hidden");     // sembunyikan tombol besar
-    } 
-    // Jika bagian tentang masih terlihat di layar (di atas)
-    else {
-        headerBtn.style.display = "none";    // sembunyikan tombol header
-        mainBtn.classList.remove("hidden");  // munculkan tombol besar
-    }
-});
-</script>
+        // Jika bagian "Tentang Aplikasi" sudah melewati atas layar (scroll ke bawah)
+        if (aboutTop < 0) {
+            headerBtn.style.display = "block";   // munculkan tombol header
+            mainBtn.classList.add("hidden");     // sembunyikan tombol besar
+        } 
+        // Jika bagian tentang masih terlihat di layar (di atas)
+        else {
+            headerBtn.style.display = "none";    // sembunyikan tombol header
+            mainBtn.classList.remove("hidden");  // munculkan tombol besar
+        }
+    });
+    </script>
     
 </body>
     </html>
